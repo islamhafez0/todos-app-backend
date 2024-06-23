@@ -4,12 +4,13 @@ const Todo = require("../models/todo");
 const { default: mongoose } = require("mongoose");
 
 router.post("/", async (req, res) => {
-  console.log(req.body);
+  const { title, userId, username } = req.body;
   try {
     const todo = new Todo({
-      title: req.body.title,
-      completed: req.body.completed,
-      user: req.body.userId,
+      title: title,
+      completed: false,
+      user: userId,
+      username,
     });
     await todo.save();
     res.status(201).send(todo);

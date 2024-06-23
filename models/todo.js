@@ -19,7 +19,10 @@ const todoSchema = new mongoose.Schema({
   },
   user: {
     type: String,
-    ref: "User",
+    required: true,
+  },
+  username: {
+    type: String,
     required: true,
   },
 });
